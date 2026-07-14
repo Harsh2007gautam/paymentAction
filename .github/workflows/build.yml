@@ -22,17 +22,14 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Give execute permission to Maven Wrapper
-        run: chmod +x mvnw
-
       - name: Build Project
-        run: ./mvnw clean compile
+        run: mvn clean compile
 
       - name: Run Unit Tests
-        run: ./mvnw test
+        run: mvn test
 
       - name: Package Application
-        run: ./mvnw clean package -DskipTests
+        run: mvn clean package -DskipTests
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
